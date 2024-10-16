@@ -12,7 +12,7 @@ public class TextFactory {
             return new Text();
         }
 
-        StringBuilder[] rawSentences = split(rawText);
+        StringBuilder[] rawSentences = separateRawTextOnSentences(rawText);
         Sentence[] sentences = new Sentence[rawSentences.length];
 
         for(int i = 0; i < rawSentences.length; i++) {
@@ -21,7 +21,7 @@ public class TextFactory {
         return new Text(sentences);
     }
 
-    private static StringBuilder[] split(StringBuilder rawText) {
+    private static StringBuilder[] separateRawTextOnSentences(StringBuilder rawText) {
         String[] rawSentences = rawText.toString().split("(?<=[.!?])\\s*");
         StringBuilder[] sentenceBuilders = new StringBuilder[rawSentences.length];
 
