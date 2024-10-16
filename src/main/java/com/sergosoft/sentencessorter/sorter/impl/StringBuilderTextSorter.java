@@ -1,16 +1,19 @@
-package com.sergosoft.sentencessorter;
+package com.sergosoft.sentencessorter.sorter.impl;
+
+import com.sergosoft.sentencessorter.sorter.TextSorter;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class SentenceSorter {
+public class StringBuilderTextSorter implements TextSorter<StringBuilder> {
 
-    public StringBuilder sortByWordCount(StringBuilder text) {
-        if(text == null) {
+    @Override
+    public StringBuilder sortByWordCount(StringBuilder textToSort) {
+        if(textToSort == null) {
             throw new IllegalArgumentException("Input text cannot be null or empty.");
         }
 
-        String[] sentences = text.toString().split("(?<=[.!?])\\s*");
+        String[] sentences = textToSort.toString().split("(?<=[.!?])\\s*");
         Arrays.sort(sentences, Comparator.comparingInt(sentence -> sentence.split("\\s+").length));
 
         StringBuilder sortedText = new StringBuilder();

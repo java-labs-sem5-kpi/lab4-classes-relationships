@@ -1,4 +1,4 @@
-import com.sergosoft.sentencessorter.SentenceSorter;
+import com.sergosoft.sentencessorter.sorter.impl.StringBuilderTextSorter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,13 +9,13 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class SentenceSorterTests {
+public class StringBuilderTextSorterTests {
 
-    private final SentenceSorter sentenceSorter = new SentenceSorter();
+    private final StringBuilderTextSorter stringBuilderTextSorter = new StringBuilderTextSorter();
     private final StringBuilder textToSort;
     private final StringBuilder expectedSortedText;
 
-    public SentenceSorterTests(StringBuilder textToSort, StringBuilder expectedSortedText) {
+    public StringBuilderTextSorterTests(StringBuilder textToSort, StringBuilder expectedSortedText) {
         this.textToSort = textToSort;
         this.expectedSortedText = expectedSortedText;
     }
@@ -51,6 +51,6 @@ public class SentenceSorterTests {
 
     @Test
     public void testSortByWordCountSentences() {
-        assertEquals(expectedSortedText.toString(), sentenceSorter.sortByWordCount(textToSort).toString());
+        assertEquals(expectedSortedText.toString(), stringBuilderTextSorter.sortByWordCount(textToSort).toString());
     }
 }
