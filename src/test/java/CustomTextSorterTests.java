@@ -1,12 +1,13 @@
-import com.sergosoft.sentencessorter.entity.Text;
-import com.sergosoft.sentencessorter.factory.TextFactory;
-import com.sergosoft.sentencessorter.sorter.impl.CustomTextSorter;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.sergosoft.sentencessorter.entity.Text;
+import com.sergosoft.sentencessorter.factory.TextFactory;
+import com.sergosoft.sentencessorter.sorter.impl.CustomTextSorter;
 
 import static org.junit.Assert.assertEquals;
 
