@@ -8,7 +8,7 @@ import com.sergosoft.sentencessorter.sorter.impl.CustomTextSorter;
 public class Main {
     public static void main(String[] args) {
         // Provide text to sort here
-        Text text = TextFactory.createText("Sample text to sort. Just try in out here! See ya. Ok?");
+        Text text = TextFactory.createText(new StringBuilder("Sample text to sort. Just try in out here! See ya. Ok?"));
 
         // processing the text
         TextSorter<Text> textSorter = new CustomTextSorter();

@@ -4,7 +4,7 @@ import com.sergosoft.sentencessorter.entity.Sentence;
 import com.sergosoft.sentencessorter.entity.Text;
 
 public class TextFactory {
-    public static Text createText(String rawText) {
+    public static Text createText(StringBuilder rawText) {
         if(rawText == null) {
             throw new IllegalArgumentException("Input string cannot be null.");
         }
@@ -12,7 +12,7 @@ public class TextFactory {
             return new Text();
         }
 
-        String[] rawSentences = split(rawText);
+        StringBuilder[] rawSentences = split(rawText);
         Sentence[] sentences = new Sentence[rawSentences.length];
 
         for(int i = 0; i < rawSentences.length; i++) {
@@ -21,11 +21,14 @@ public class TextFactory {
         return new Text(sentences);
     }
 
-    private static String[] split(String rawText) {
-        String[] rawSentences = rawText.split("(?<=[.!?])\\s*");
+    private static StringBuilder[] split(StringBuilder rawText) {
+        String[] rawSentences = rawText.toString().split("(?<=[.!?])\\s*");
+        StringBuilder[] sentenceBuilders = new StringBuilder[rawSentences.length];
+
         for (int i = 0; i < rawSentences.length; i++) {
-            rawSentences[i] = rawSentences[i].trim();
+            sentenceBuilders[i] = new StringBuilder(rawSentences[i].trim());
         }
-        return rawSentences;
+
+        return sentenceBuilders;
     }
 }

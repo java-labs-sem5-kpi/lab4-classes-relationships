@@ -53,7 +53,7 @@ public class CustomTextSorterTests {
 
     @Test
     public void testSortByWordCountSentences() {
-        Text text = TextFactory.createText(textToSort.toString());
+        Text text = TextFactory.createText(textToSort);
         assertEquals(expectedSortedText.toString(), customTextSorter.sortByWordCount(text).toString());
     }
 }

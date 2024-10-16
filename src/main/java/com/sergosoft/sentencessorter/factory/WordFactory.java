@@ -5,8 +5,8 @@ import com.sergosoft.sentencessorter.entity.sentencepart.impl.PunctuationMark;
 import com.sergosoft.sentencessorter.entity.Word;
 
 public class WordFactory {
-    public static Word createWord(String rawWord) {
-        if(rawWord == null || rawWord.isBlank()) {
+    public static Word createWord(StringBuilder rawWord) {
+        if(rawWord == null || rawWord.isEmpty()) {
             throw new IllegalArgumentException("Raw word cannot be null or empty.");
         }
 

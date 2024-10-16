@@ -6,16 +6,16 @@ import com.sergosoft.sentencessorter.entity.sentencepart.SentencePart;
 
 public class SentenceFactory {
 
-    public static Sentence createSentence(String rawSentence) {
+    public static Sentence createSentence(StringBuilder rawSentence) {
         if(rawSentence == null || rawSentence.isEmpty()) {
             throw new IllegalArgumentException("Sentence string cannot be null or empty.");
         }
 
-        String[] rawSentenceParts = separateRawSentence(rawSentence);
+        StringBuilder[] rawSentenceParts = separateRawSentence(rawSentence);
         SentencePart[] sentenceParts = new SentencePart[rawSentenceParts.length];
 
         for(int i = 0; i < rawSentenceParts.length; i++) {
-            String currentSentencePart = rawSentenceParts[i];
+            StringBuilder currentSentencePart = rawSentenceParts[i];
             if(currentSentencePart.length() == 1) {
                 // if current sentence part is a punctuation mark
                 char oneSymbolSentencePart = currentSentencePart.charAt(0);
@@ -30,11 +30,14 @@ public class SentenceFactory {
         return new Sentence(sentenceParts);
     }
 
-    private static String[] separateRawSentence(String rawSentence) {
-        String[] rawSentenceParts = rawSentence.split("(?=[\\p{Punct}&&[^']])|(?<=[\\p{Punct}&&[^']])|\\s+");
+    private static StringBuilder[] separateRawSentence(StringBuilder rawSentence) {
+        String[] rawSentenceParts = rawSentence.toString().split("(?=[\\p{Punct}&&[^']])|(?<=[\\p{Punct}&&[^']])|\\s+");
+        StringBuilder[] stringBuilders = new StringBuilder[rawSentenceParts.length];
+
         for (int i = 0; i < rawSentenceParts.length; i++) {
-            rawSentenceParts[i] = rawSentenceParts[i].trim();
+            stringBuilders[i] = new StringBuilder(rawSentenceParts[i].trim());
         }
-        return rawSentenceParts;
+
+        return stringBuilders;
     }
 }
